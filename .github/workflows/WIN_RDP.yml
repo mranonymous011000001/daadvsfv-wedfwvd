@@ -1,0 +1,24 @@
+name: Windows - RustDesk
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Start Building...
+    runs-on: windows-latest
+    
+    steps:
+      - name: Downloading & Installing Essentials
+        shell: powershell
+        run: |
+          Invoke-WebRequest -Uri "https://www.dropbox.com/scl/fi/qdyd4p9t6xoabl95n5o3g/Downloads.bat?rlkey=snr74vv1vr8k5suujugvrhjtm&dl=1" -OutFile "Downloads.bat"
+          ./Downloads.bat  # Runs the downloaded batch file
+
+      - name: Log In To AnyDesk
+        shell: cmd
+        run: cmd /c show.bat
+
+      - name: Wait for 4 hours
+        shell: powershell
+        run: Start-Sleep -Seconds 14400  # 14400 seconds = 4 hours
